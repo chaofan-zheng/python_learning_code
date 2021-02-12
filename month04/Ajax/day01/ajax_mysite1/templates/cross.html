@@ -34,12 +34,24 @@
             // });
 
             // 方法三
+            // $.ajax({
+            //     url:'http://localhost:8000/cross_server',
+            //     type:'get',
+            //     dataType:'jsonp',//指定为跨域访问
+            //     success: function(data){
+            //         console.log(data)
+            //     }
+            // });
+
+
+            // test
             $.ajax({
                 url:'http://localhost:8000/cross_server',
                 type:'get',
                 dataType:'jsonp',//指定为跨域访问
                 success: function(data){
                     console.log(data)
+                    console.log(data.name,data.age)
                 }
             });
             // 局限性都在于，只能发送get请求

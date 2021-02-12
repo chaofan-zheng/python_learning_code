@@ -10,7 +10,7 @@ r = redis.Redis(password='417355570')
 
 def user_detail(request, uid):
     cache_key = f'user_{uid}'
-    # 西安判断是否有缓存，有缓存就用缓存，没有就读取mysql里面的数据（读的时候因为用的是get，所以容易报错，要get一下），
+    # 先判断是否有缓存，有缓存就用缓存，没有就读取mysql里面的数据（读的时候因为用的是get，所以容易报错，要get一下），
     # 然后写入缓存，为下一次访问提供方便
     if r.exists(cache_key):
         data = r.hgetall(cache_key)

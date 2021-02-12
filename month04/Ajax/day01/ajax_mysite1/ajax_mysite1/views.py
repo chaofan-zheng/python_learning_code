@@ -61,6 +61,13 @@ def test_cross(request):
     return render(request, 'cross.html')
 
 
+# def cross_server(request):
+#     func = request.GET.get('callback')
+#     return HttpResponse(func+"('我跨域来啦')")
+
 def cross_server(request):
     func = request.GET.get('callback')
-    return HttpResponse(func+"('我跨域来了')")
+    post_data = {'name': 'Aiden', 'age': 18}
+    json_str = json.dumps(post_data)
+    print(json_str)
+    return HttpResponse(func+f'({json_str})')

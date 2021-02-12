@@ -52,16 +52,7 @@
         $.each(cityArr, function (i, o) {
             $('#city').append($(`<option value="${o.cityId}">${o.cityName}</option>`))
         })
-
-        // $('option').click(function(){
-        //     console.log($(this));
-        //     if ($(this).text()=='北京'){
-        //         console.log($(this))
-        //         $.each(beijingArr,function(index,obj){
-        //             $(this).append($(`<option value="${o.beijingArr}">${o.beijingName}</option>`));
-        //         })
-        //     }
-        // })
+        
         $('#city').on("change", function () {
             $('#area>option').remove()
             $('#area').append($(`<option value="">请选择</option>`))

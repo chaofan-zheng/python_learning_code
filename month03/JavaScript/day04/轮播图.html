@@ -32,6 +32,8 @@
         <li class="item"><img src="../day03/imgs/gm4-6.jpg" alt=""></li>
         <li class="item"><img src="../day03/imgs/gm5-6.jpg" alt=""></li>
     </ul>
+    <p class= 'test'></p>
+    <p id= 'test'></p>
     <script src="../js/jquery.min.js"></script>
     <script>
         var li = document.getElementsByTagName('li')
@@ -51,6 +53,10 @@
             li[i].style.opacity=1
             i++
         },2000)
+        console.log(document.getElementsByClassName('item'))
+        console.log(document.getElementsByClassName('test'))
+        console.log(document.getElementById('test'))
+        
     </script>
 </body>
 </html>

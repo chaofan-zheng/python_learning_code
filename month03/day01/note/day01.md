@@ -22,10 +22,10 @@
 1. 运行环境：浏览器，设置chrome为默认浏览器，作为网页文件的运行环境。
 
 2. 调试工具：浏览器自带的调试工具，使用快捷键"F12"或右键"检查"打开。
-  ctrl + - 缩小字体     ctrl + + 放大字体 
+    ctrl + - 缩小字体     ctrl + + 放大字体 
 
 3. 开发工具：不限，选用个人习惯的即可。（Sublime、VSCode、EditPlus、PyCharm等）
-  open in browser
+    open in browser
 
 4. 改成中文:Vs code -extension-Chinese-install-restart now
 
