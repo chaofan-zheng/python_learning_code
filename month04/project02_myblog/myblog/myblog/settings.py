@@ -148,3 +148,18 @@ CORS_ALLOW_HEADERS = (
 
 # 生成token使用的秘钥
 JWT_TOKEN_KEY = '123456'
+
+CACHES = {
+    "default": {
+            "BACKEND": "django_redis.cache.RedisCache",
+            "LOCATION": "redis://127.0.0.1:6379",
+            "OPTIONS": {
+                "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            }
+        }
+}
+
+ACCOUNT_ID = '8aaf0708773733a8017741b5dc9904ae'
+AUTH_TOKEN = 'e7ca8f6377ef406ea0afec3f73e28d36'
+APPID = '8aaf0708773733a8017741b5dd6804b4'
+TEMPLATE_ID = '1'

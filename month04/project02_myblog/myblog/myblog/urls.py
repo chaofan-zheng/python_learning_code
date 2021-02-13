@@ -19,6 +19,6 @@ from user import views as user_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('v1/user',user_views.UserView.as_view()),
-    # path('v1/users/',include('user.urls')),
+    path('v1/users',user_views.UserView.as_view()),
+    path('v1/users/',include('user.urls')),
 ]
