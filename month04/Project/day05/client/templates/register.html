@@ -132,26 +132,26 @@ A ny individuals and organizations and not for commercial use, professiona websi
 
     }
 
-    // 发送短信的请求
-    function sendSMS(){
-        // 获取手机号
-        var phone = $('.phone').val();
-        var post_data = {'phone':phone}
-        $.ajax({
-            url:'http://127.0.0.1:8000/v1/users/sms',
-            type:'POST',
-            data:JSON.stringify(post_data),
-            contentType:'application/json',
-            dataType:'json',
-            success:function(res){
-                if(res.code==200){
-                    alert('短信发送成功，请注意查收')
-                }else{
-                    alert(res.error)
-                }
-            }
-        })
-    }
+    // // 发送短信的请求
+    // function sendSMS(){
+    //     // 获取手机号
+    //     var phone = $('.phone').val();
+    //     var post_data = {'phone':phone}
+    //     $.ajax({
+    //         url:'http://127.0.0.1:8000/v1/users/sms',
+    //         type:'POST',
+    //         data:JSON.stringify(post_data),
+    //         contentType:'application/json',
+    //         dataType:'json',
+    //         success:function(res){
+    //             if(res.code==200){
+    //                 alert('短信发送成功，请注意查收')
+    //             }else{
+    //                 alert(res.error)
+    //             }
+    //         }
+    //     })
+    // }
 
 </script>
 
