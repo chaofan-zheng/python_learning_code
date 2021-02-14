@@ -119,7 +119,9 @@ A ny individuals and organizations and not for commercial use, professiona websi
 			// 转换为json对象
 			success:function(res){
 				if(res.code == 200){
-					alert('注册成功！');
+                    alert('注册成功！');
+                    // 重定向到index
+                    window.location.href='http://127.0.0.1:5000/index'
 					// 在本地存储中存储token和用户名
 					window.localStorage.setItem('dnblog_token',res.data.token);
 					window.localStorage.setItem('dnblog_user',res.username);

@@ -30,10 +30,11 @@ A ny individuals and organizations and not for commercial use, professiona websi
        url:"http://127.0.0.1:8000/v1/users/"+ username,
        beforeSend: function(request) {
            request.setRequestHeader("Authorization", token);
+           console.log(request)
        },
        success:function (result) {
            if (200 == result.code){
-               console.log(result);
+            //    console.log(result);
                $(document).attr('title', '个人信息修改-'+ result.data.nickname+'的博客');
                html_body += '<div class="bg">';
                html_body += '<img src="/static/images/c.jpg" alt="">';

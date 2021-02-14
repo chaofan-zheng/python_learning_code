@@ -4,12 +4,13 @@ import random
 
 from django.conf import settings
 from django.core.cache import cache
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
 
 # Create your views here.
 from django.views import View
 
+from tools.make_token import make_token
 from tools.sms import YunTongXin
 from user.models import UserProfile
 
@@ -52,7 +53,12 @@ class UserView(View):
         except:
             result = {'code': 10102, 'error': '用户名已注册'}
             return JsonResponse(result)
-        return JsonResponse({'code': 200})
+        token = make_token(username)
+        return JsonResponse({'code': 200, 'username': username,
+                             'data': {'token': token}})
+
+    def get(self, request):
+        pass
 
 
 def send_sms(phone, code):
