@@ -8,8 +8,10 @@ from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
 
 # Create your views here.
+from django.utils.decorators import method_decorator
 from django.views import View
 
+from tools.login_check import login_check
 from tools.make_token import make_token
 from tools.sms import YunTongXin
 from user.models import UserProfile
@@ -57,8 +59,31 @@ class UserView(View):
         return JsonResponse({'code': 200, 'username': username,
                              'data': {'token': token}})
 
-    def get(self, request):
-        pass
+    # 处理about.html请求
+    @method_decorator(login_check)
+    def get(self, request, username):
+        try:
+            user = UserProfile.objects.get(username=username)
+        except:
+            result = {'code': 10104, 'error': '用户名称错误！'}
+            return JsonResponse(result)
+        result = {'code': 200, 'username': username,
+                  'data': {'info': user.info, 'sign': user.sign,
+                           'nickname': user.nickname,
+                           'avatar': str(user.avatar)}}
+        return JsonResponse(result)
+
+    @method_decorator(login_check)
+    def put(self, request, username):
+        json_str = request.body
+        json_obj = json.loads(json_str)
+        user = request.myuser
+        user.sign = json_obj['sign']
+        user.nickname = json_obj['nickname']
+        user.info = json_obj['info']
+        user.save()
+        result = {'code': 200, 'username': user.username}
+        return JsonResponse(result)
 
 
 def send_sms(phone, code):
@@ -76,3 +101,25 @@ def sms_views(request):
     cache.set(cache_key, code, 180)
     send_sms(phone, code)
     return JsonResponse({'code': 200})
+
+
+@login_check
+def avatar_upload(request, username):
+    user = request.myuser
+    user.avatar = request.FILES['avatar']
+    user.save()
+    result = {'code': 200, 'username': user.username}
+    return JsonResponse(result)
+
+
+def test_request(request):
+    # values = request.META.items()
+    # html = []
+    # for k, v in values:
+    #     html.append('<tr><td>%s</td><td>%s</td></tr>' % (k, v))
+    # return HttpResponse('<table>%s</table>' % '\n'.join(html))
+    list01 = []
+    for i in request:
+        list01.append(i)
+        print(i)
+    return HttpResponse(list01)

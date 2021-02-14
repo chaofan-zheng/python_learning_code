@@ -13,6 +13,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from user import views as user_views
@@ -23,3 +25,5 @@ urlpatterns = [
     path('v1/users/',include('user.urls')),
     path('v1/tokens',btoken_view.TokenView.as_view()),
 ]
+urlpatterns += static(settings.MEDIA_URL,
+                      document_root=settings.MEDIA_ROOT)
