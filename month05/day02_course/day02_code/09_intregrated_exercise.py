@@ -19,6 +19,7 @@ import sys
     使用mysql、mongodb、csv存储结果
 create database guazidb default charset utf8;
 create table guazi (href varchar(100), title varchar(50));
+
 """
 
 
