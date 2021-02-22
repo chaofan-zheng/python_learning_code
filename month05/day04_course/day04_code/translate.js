@@ -15,7 +15,7 @@ function n(r, o) {
     }
     return r
 }
-function e(r) {
+function e(r,gtk) {
     var o = r.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g);
     if (null === o) {
         var t = r.length;
@@ -30,7 +30,7 @@ function e(r) {
     var u = void 0
       , //l = "" + String.fromCharCode(103) + String.fromCharCode(116) + String.fromCharCode(107);
       l = "gtk"
-    u = null !== i ? i : (i = "320305.131321201" || "") || "";
+    u = null !== i ? i : (i = gtk || "") || "";
     for (var d = u.split("."), m = Number(d[0]) || 0, s = Number(d[1]) || 0, S = [], c = 0, v = 0; v < r.length; v++) {
         var A = r.charCodeAt(v);
         128 > A ? S[c++] = A : (2048 > A ? S[c++] = A >> 6 | 192 : (55296 === (64512 & A) && v + 1 < r.length && 56320 === (64512 & r.charCodeAt(v + 1)) ? (A = 65536 + ((1023 & A) << 10) + (1023 & r.charCodeAt(++v)),
