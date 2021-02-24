@@ -6,11 +6,9 @@
 import scrapy
 
 
-class MaoyanItem(scrapy.Item):
+class DoubanItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
+    rank = scrapy.Field()
     title = scrapy.Field()
-    actor = scrapy.Field()
-    time = scrapy.Field()
     score = scrapy.Field()
-
