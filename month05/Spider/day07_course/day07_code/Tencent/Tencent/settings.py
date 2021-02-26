@@ -18,6 +18,16 @@ NEWSPIDER_MODULE = 'Tencent.spiders'
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
 
+# 1。 重新指定调度器
+SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+# 2。 重新指定去重机制
+DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
+# 3。 设置爬取完成后不清楚请求指纹
+SCHEDULER_PERSIST = True
+# 4。 指定redis的IP和PORT
+REDIS_HOST = '127.0.0.1'
+REDIS_PORT = '6379'
+
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 # CONCURRENT_REQUESTS = 32
 
@@ -68,7 +78,7 @@ DEFAULT_REQUEST_HEADERS = {
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'Tencent.pipelines.TencentPipeline': 300,
+    'Tencent.pipelines.TencentPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

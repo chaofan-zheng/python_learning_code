@@ -45,16 +45,17 @@ def get_tracks(distance):
     # tracks: [第一个0.3秒的移动距离,第二个0.3秒的移动距离,...]
 
 # 1、打开豆瓣官网 - 并将窗口最大化
-driver = webdriver.Chrome()
+driver = webdriver.Chrome(executable_path="/Users/aiden_zcf/PycharmProjects/Tmooc/chromedriver")
 driver.get(url='https://www.douban.com/')
 # 2、切换到iframe子页面
-iframe_node = driver.find_element_by_xpath('//div[@class="login"]/iframe')
-driver.switch_to.frame(iframe_node)
+frame_node = driver.find_element_by_xpath('//div[@class="login"]/iframe')
+time.sleep(0.5)# 给frame加载预留时间
+driver.switch_to.frame(frame_node)
 # 3、密码登录 + 用户名 + 密码 + 登录豆瓣
-driver.find_element_by_xpath('/html/body/div[1]/div[1]/ul[1]/li[2]').click()
-driver.find_element_by_xpath('//*[@id="username"]').send_keys('15110225726')
-driver.find_element_by_xpath('//*[@id="password"]').send_keys('123456')
-
+login_note = driver.find_element_by_xpath('/html/body/div[1]/div[1]/ul[1]/li[2]')
+login_note.click()
+driver.find_element_by_xpath('//input[@id="username"]').send_keys('Aiden')
+driver.find_element_by_xpath('//input[@id="password"]').send_keys('123456')
 while True:
     try:
         driver.find_element_by_xpath('/html/body/div[1]/div[2]/div[1]/div[5]/a').click()
@@ -76,8 +77,7 @@ while True:
         break
     except:
         pass
-
-
+# 鼠标操作一定要记得perform!!!!!
 # click_and_hold()
 # move_to_element_with_offset()
 # move_by_offset()
