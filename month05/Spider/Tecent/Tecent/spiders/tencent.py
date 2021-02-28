@@ -23,7 +23,7 @@ class TencentSpider(scrapy.Spider):
         url = self.first_url.format(timestamp, keyword, 1)
         html = requests.get(url=url, headers=self.headers).json()
         count = html['Data']['Count']
-        pagen = count / 10 if count // 10 == 0 else int(count / 10) + 1
+        pagen = count / 10 if count % 10 == 0 else int(count / 10) + 1
         return pagen
 
     def start_requests(self):

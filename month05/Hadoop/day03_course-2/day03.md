@@ -1565,7 +1565,7 @@ select goods_click,goods_id from product_tab order by goods_click;
    【1】数据格式（共有1000209条数据）
    	1:661:3:978302109
    【2】对应字段
-   	用户ID、  电影ID、  评分、  评分时间戳
+   	用户ID、  影ID、  评分、  评分时间戳
    	user_id   movie_id  rating    times
    ```
 
