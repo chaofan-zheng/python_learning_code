@@ -1,7 +1,7 @@
 """
 python实现二叉树
 """
-
+from binaryTreeExercise01 import Solution
 
 class Node:
     """节点类"""
@@ -56,13 +56,53 @@ class BinaryTree:
             if cur.right:
                 q.append(cur.right)
 
+    def pre_travel(self, node):
+        if node is None:
+            return
+        print(node.value, end=' ')
+        self.pre_travel(node.left)
+        self.pre_travel(node.right)
 
-if __name__ == '__main__':
-    binary_tree = BinaryTree()
-    binary_tree.add(1)
-    binary_tree.add(2)
-    binary_tree.add(3)
-    binary_tree.add(4)
-    binary_tree.add(5)
-    binary_tree.add(6)
-    binary_tree.breadth_travel()
+    def mid_travel(self, node):
+        if node is None:
+            return
+        self.mid_travel(node.left)
+        print(node.value, end=' ')
+        self.mid_travel(node.right)
+
+    def last_travel(self, node):
+        if node is None:
+            return
+        self.last_travel(node.left)
+        self.last_travel(node.right)
+        print(node.value, end=' ')
+
+
+
+binary_tree = BinaryTree()
+s = Solution()
+# binary_tree.add(1)
+# binary_tree.add(2)
+# binary_tree.add(3)
+# binary_tree.add(4)
+# binary_tree.add(5)
+# binary_tree.add(6)
+# binary_tree.add(7)
+# binary_tree.add(8)
+# binary_tree.add(9)
+# binary_tree.add(10)
+binary_tree.add(5)
+binary_tree.add(3)
+binary_tree.add(7)
+binary_tree.add(2)
+binary_tree.add(4)
+binary_tree.add(6)
+# binary_tree.breadth_travel()
+# print()
+# binary_tree.pre_travel(binary_tree.root)
+# print()
+binary_tree.mid_travel(binary_tree.root)
+print()
+# binary_tree.last_travel(binary_tree.root)
+# print()
+s.find_k_smallest(binary_tree.root,3)
