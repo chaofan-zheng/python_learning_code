@@ -25,19 +25,17 @@ arr = [3,7,8,7,6,6,5,3,2]
 s = Solution()
 print(s.maxLength(arr))
 
-#答案
-# class Solution:
-#     def maxLength(self, arr):
-        # write code here
-        # longest_length,i,j = 0, 0, 0
-        # arr_length = len(arr)
-        # while j < arr_length:
-        #     try:
-        #         index = arr[i:j].index(arr[j])
-        #         longest_length = max(longest_length, j-i)
-        #         i = index+1
-        #     except ValueError:
-        #         pass
-        #     j += 1
+class Solution:
+    def maxLength(self, arr):
+        longest_length,i,j = 0, 0, 0
+        arr_length = len(arr)
+        while j < arr_length:
+            try:
+                index = arr[i:j].index(arr[j])
+                longest_length = max(longest_length, j-i)
+                i = index+1
+            except ValueError:
+                pass
+            j += 1
 
-        # return max(longest_length, j-i)
+        return max(longest_length, j-i)
