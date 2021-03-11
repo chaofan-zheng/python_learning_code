@@ -82,8 +82,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'dailyfresh',
         'USER': 'root',
-        'PASSWORD': '417355570azcfqgg',
-        'HOST': '127.0.0.1',
+        'PASSWORD': '123456',
+        'HOST': '172.16.246.130',
         'PORT': 3306,
     }
 }
@@ -124,7 +124,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
 TINYMCE_DEFAULT_CONFIG = {
     'theme': 'silver',
     'width': 600,
@@ -144,3 +143,29 @@ EMAIL_HOST_USER = '417355570@qq.com'  # 发送邮件的邮箱
 EMAIL_HOST_PASSWORD = 'uppqchnsiamccadj'  # qq邮箱授权码
 # EMAIL_USE_TLS = True  # 与SMTP服务器通信时，是否启动TLS链接(安全链接)
 EMAIL_FROM = '天天生鲜<417355570@qq.com>'  # EMAIL_FROM 和 EMAIL_HOST_USER必须一样
+
+# django-redis cache configuration
+# https://django-redis-chs.readthedocs.io/zh_CN/latest/
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://172.16.246.130:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+# The configuration of the session
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
+
+# 配置登录url地址
+LOGIN_URL = '/user/login'
+
+# 设置Ｄｊａｎｇｏ的文件存储类，Ｄｊａｎｇｏ上传文件的时候，就会使用我们自己的方法
+DEFAULT_FILE_STORAGE = 'utils.fdfs.storage.FDFStorage'
+
+FDFS_CLIENT_CONF = './utils/fdfs/client.conf'
+FDFS_URL = 'http://172.16.246.130:8888/'

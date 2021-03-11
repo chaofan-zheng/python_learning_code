@@ -19,9 +19,15 @@ class AddressManage(models.Manager):
 
     def get_default_address(self, user):
         """获取用户默认收货地址"""
+        # objects就是一个模型管理器对象
         # self.model获取对象名称
+        # 1.改变原有查询的结果集：all()
+        # 2.封装方法：用户操作模型类对应的数据表（增删改查）
+        # self.model 获取self对象所在的模型类，也就是Address
+        # Address.objects.get_default_address()如此调用,
+        # 所以Address.objects就相当于AddressManage的一个实例化对象
         try:
-            address = self.get(user=user, is_default=True)
+            address = self.get(user=user, is_default=True) # 继承manager里面的方法
         except self.model.DoesNotExist:
             address = None
 

@@ -1,20 +1,20 @@
 from django.db import models
 from tinymce.models import HTMLField
 from db.base_model import BaseModel
-
-class GoodsTest(models.Model):
-    """test"""
-    STATUS_CHOICES = (
-        (0, '上架'),
-        (1, '下架'),
-    )
-    status = models.SmallIntegerField(default=1, choices=STATUS_CHOICES, verbose_name='状态')
-    detail = HTMLField(verbose_name='商品详情')
-
-    class Meta:
-        db_table = 'df_goods_test'  # 指定表名
-        verbose_name = '商品'
-        verbose_name_plural = verbose_name
+#
+# class GoodsTest(models.Model):
+#     """test"""
+#     STATUS_CHOICES = (
+#         (0, '上架'),
+#         (1, '下架'),
+#     )
+#     status = models.SmallIntegerField(default=1, choices=STATUS_CHOICES, verbose_name='状态')
+#     detail = HTMLField(verbose_name='商品详情')
+#
+#     class Meta:
+#         db_table = 'df_goods_test'  # 指定表名
+#         verbose_name = '商品'
+#         verbose_name_plural = verbose_name
 
 
 class GoodsType(BaseModel):

@@ -22,8 +22,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('tinymce/', include(('tinymce.urls', 'tinymce'))),
     path('test', views.test),
-    path('user/', include('user.urls'), name='user'),
-    path('cart/', include('cart.urls'), name='cart'),
-    path('order/', include('order.urls'), name='order'),
-    path('', include('goods.urls'), name='goods'),  # 放到最后
+    # path('user/', include('user.urls', ['user', 'user'])),
+    # path('cart/', include('cart.urls', ['cart', 'cart'])),
+    # path('order/', include('order.urls', ['order', 'order'])),
+    # path('', include('goods.urls', 'goods')),  # 放到最后
+    path('user/', include(('user.urls', 'user'), namespace='user')),
+    path('cart/', include(('cart.urls', 'cart'), namespace='cart')),
+    path('order/', include(('order.urls', 'order'), namespace='order')),
+    path('', include(('goods.urls', 'goods'), namespace='goods')),  # 放到最后
+
 ]

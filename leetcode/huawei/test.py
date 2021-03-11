@@ -32,9 +32,34 @@ print(list01)
 list01 = ['dd', 'da', 'dc', 'dword', 'd']
 list01.sort(key=lambda x: -len(x))
 print(list01)
-print('dd'>'da')
+print('dd' > 'da')
 print()
 
 list01 = ['a', 'a']
 print(list01.count('a'))
 print(list01[:3])
+
+
+class A:
+    def __init__(self):
+        self.a = 'a'
+
+    def functionA(self):
+        print('This is functionA')
+
+
+class B(A):
+    def __init__(self):
+        super().__init__()
+        self.b = 'b'
+
+    def functionA(self):
+        print('This is overrode functionA')
+
+    def functionB(self):
+        print('This is functionB')
+
+
+b = B()
+b.functionA()
+b.functionB()
