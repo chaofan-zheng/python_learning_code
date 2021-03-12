@@ -49,9 +49,6 @@ class A:
 
 
 class B(A):
-    def __init__(self):
-        super().__init__()
-        self.b = 'b'
 
     def functionA(self):
         print('This is overrode functionA')
@@ -63,3 +60,4 @@ class B(A):
 b = B()
 b.functionA()
 b.functionB()
+print(b.a)
