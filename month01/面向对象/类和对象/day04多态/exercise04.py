@@ -30,3 +30,8 @@ class D(B,C):
 
 d = D()
 d.func01()
+# D - func01
+# B - func01
+# C - func01
+# A - func01
+
