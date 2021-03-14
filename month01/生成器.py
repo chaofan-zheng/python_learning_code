@@ -68,3 +68,16 @@ def fib(max):
 
 a = fib(10)
 print(fib(10))
+
+def gen():
+    for i in range(5):
+        a = yield i
+        print(a)
+g = gen()
+print(g.__next__())
+print(g.__next__())
+print(g.send(5))
+print(g.__next__())
+print(g.__next__())
+
+
