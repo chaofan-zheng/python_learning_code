@@ -4,8 +4,8 @@ from random import random
 
 
 def worker(msg, sec):
-    print(ctime(), '---', msg)
     sleep(sec)
+    print(ctime(), '---', msg)
 
 
 # 创建进程池
