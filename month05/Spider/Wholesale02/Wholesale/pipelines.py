@@ -10,5 +10,6 @@
 
 class WholesalePipeline:
     def process_item(self, item, spider):
-        print(item)
+        # print(item)
+        print('爬取成功')
         return item

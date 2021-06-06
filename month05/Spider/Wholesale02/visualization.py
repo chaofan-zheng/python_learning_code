@@ -1,14 +1,8 @@
-from scrapy import cmdline
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import warnings
 import seaborn as sns
-import os
-cmdline.execute('scrapy crawl wholesale -o wholesale.csv'.split())
-command = f'jupyter nbconvert {os.getcwd()}/visualization.ipynb'
-print(command)
-os.system(command)
 
 warnings.filterwarnings("ignore")
 plt.rcParams['font.sans-serif'] = ['SimHei']
